@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays and loops</title>
+    <style>
+        body{
+            font-family: arial;
+        }
+        .display {
+            display:grid;
+            grid-template-columns: 200px 150px 100px;
+        }
+    </style>
+</head>
+<body>
+    <p>To Do List Practice 1</p>
+    <input class="inputName" placeholder="Todo Name" onkeydown="
+    if (event.key === 'Enter')
+    {
+        forButton();
+    }">
+    <input type="date" class="dueDateInput">
+
+    <button class="todo" onclick="
+            forButton();
+    ">Add</button>
+
+
+    <div class="display"></div>
+
+
+    <script>
+        const todoList = [{name: 'asda fsdf fsf', dueDate: '20-12-2051'},
+                            {name: 'adfdfdf efweno j', dueDate: '12-12-2012'}];
+        renderTodoList();
+        function renderTodoList() {
+
+            let htmlv = '';
+            for (let i = 0; i < todoList.length ; i++){
+                const todoObject = todoList[i];
+                const {name, dueDate} = todoObject;
+                //const {dueDate} = todoObject;
+
+
+                const html = `<div>${name}</div>
+                                <div>${dueDate}</div>
+                                <button onclick="todoList.splice(${i}, 1);
+                                renderTodoList();
+                                ">Delete</button>`;
+                htmlv += html;
+                
+            }
+            document.querySelector('.display').innerHTML = htmlv;
+    }
+        function forButton(){
+            let inputElement = document.querySelector('.inputName');
+
+            const dateInputElement = document.querySelector('.dueDateInput');
+            const date = dateInputElement.value;
+            
+            todoList.push({name: inputElement.value, dueDate: date});
+            //todoList.push(inputElement.value);
+            inputElement.value = '';
+
+           
+            renderTodoList();
+           
+        }
+    </script>
+</body>
+</html>

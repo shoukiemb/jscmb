@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            text-align: center;
+            font-size: 25px;
+        }
+        #priceTag {
+            font-size: 2rem;
+        }
+        button {
+            margin: 30px;
+            padding: 25px;
+            font-size: 1.5rem;
+
+        }
+        #cart{
+            background-color: yellow;
+            border-color: rgb(48, 11, 11);
+
+        }
+        #cart:hover {
+            background-color: rgb(150, 167, 167);
+            border-color: rgb(168, 168, 40);
+            border-width: 5px;
+        }
+       
+        button:hover {
+            background-color: rgb(150, 167, 167);
+            border-color: rgb(51, 11, 11);
+            border-width: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+    <p>CALCULATOR</p>
+    <span id="priceTag">Answer is not here</span> <br><br>
+    <button id="one" onclick="
+                        calculations += '1';
+                        console.log(calculations);">1</button>
+    <button id="two" onclick="
+                        calculations += '2';
+                        console.log(calculations);">2</button>
+    <button id="three" onclick="
+                        calculations += '3';
+                        console.log(calculations);">3</button>
+    <button id="plus" onclick="
+                        calculations += '+';
+                        console.log(calculations);">+</button>
+    <button id="equal" onclick="
+                        calculations = eval(calculations);
+                        console.log(calculations)">=</button>
+
+
+
+    <script>
+        let calculations = '';
+
+    </script>
+</body>
+</html>

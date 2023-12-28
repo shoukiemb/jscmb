@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-Amazon</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+        }
+        .sub-btn {
+            border: none;
+            background-color: black;
+            color:white;
+            padding: 10px 15px;
+            font-weight: bold;
+            border-radius: 35px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+        .is-subscribed {
+            color: black;
+            background-color: rgb(240, 240, 240);
+        }
+
+        .cost-input {
+            font-size: 15px;
+            padding: 10px;
+        }
+        .calculate-btn {
+            border: none;
+            padding: 12px 15px;
+            font-size: 15px;
+            background-color: green;
+            color:white;
+            cursor: pointer;
+
+        }
+
+    </style>
+</head>
+<body>
+    <p>YouTube Subscribe Button</p>
+    <button  class="js-subscribe-button sub-btn" onclick="
+           subs();
+    ">
+    Subscribe</button>
+
+    <p>Amazon Shopping Calculator</p>
+    <input placeholder="Cost of Order" class="js-cost-input cost-input" type="text" onkeydown="
+            
+            if (event.key === 'Enter')
+            {
+                calculatePrice();
+
+            }
+    ">
+    <button class="calculate-btn" onclick="
+        calculatePrice();
+    ">Calculate</button>
+
+    <!-- <input placeholder="Enter text" class="js-text-input" type="text" onkeyup="
+            let inElement = document.querySelector('.js-text-input').value;
+            document.querySelector('js-text-message').innerHTML = inElement;
+    ">
+    <br>
+    <p class="js-text-message"></p> -->
+
+    <p class="js-total-cost"></p>
+
+
+    <script>
+        function calculatePrice() {
+            let cost = Math.round((document.querySelector('.js-cost-input').value));
+           
+
+            if (cost < 40) {
+                cost = cost + 10;
+            }
+
+            document.querySelector('.js-total-cost')
+            .innerHTML = `$${cost}`;
+        }
+
+
+        function subs(){
+            const btnElement = document.querySelector('.js-subscribe-button');
+            if (btnElement.innerHTML === 'Subscribe'){
+                btnElement.innerHTML = 'Subscribed!';
+                btnElement.classList.add('is-subscribed');
+            }
+            else {
+                btnElement.innerHTML = 'Subscribe';
+                btnElement.classList.remove('is-subscribed');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+    <link rel="stylesheet" href="dom1.css">
+</head>
+<body>
+    <p class="title">Rock Paper Scissor</p>
+
+    <button class="move-button" onclick="
+        resultss('Rock');
+        "><img src="Rock-emoji.png" class="move-icon"></button>
+    <button class="move-button" onclick="
+         resultss('Paper');   
+        "><img src="Paper-emoji.png" class="move-icon"></button>
+    <button class="move-button" onclick="
+        resultss('Scissor');        
+        "><img src="Scissor-emoji.png" class="move-icon"></button>
+
+
+    <p class="js-declare result"></p>
+    <p class="js-picks picks"></p>    
+    <p class="js-score score" ></p>
+    
+
+    <button onclick="reset();" class="reset-score-btn">Reset Score</button>
+    <button onclick="autoplay();" class="auto-play-btn">Auto Play</button>
+
+    
+
+
+   
+
+    <script src="dom1.js"></script>
+</body>
+</html>

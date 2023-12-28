@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+</head>
+<body>
+    <p>Rock Paper Scissor</p>
+
+    <button onclick="
+        resultss('Rock');
+        ">Rock</button>
+    <button onclick="
+         resultss('Paper');   
+        ">Paper</button>
+    <button onclick="
+        resultss('Scissor');        
+        ">Scissor</button>
+    <button onclick="reset();">Reset Score</button>
+    
+
+
+   
+
+    <script>
+
+        let scores = JSON.parse(localStorage.getItem('score')) || {
+                                                                    wins : 0,
+                                                                    losses : 0,
+                                                                    ties : 0
+                                                                    };
+
+       /* if (!scores ){          ///(scores === null)///
+        scores = {
+            wins : 0,
+            losses : 0,
+            ties : 0,
+        };
+        }*/
+        function cPick() {
+            const rNum = Math.random();
+
+            let cVar;
+            if (rNum >= 0 && rNum < 1/3) {
+            cVar = 'Rock';
+            }
+            else if (rNum >= 1/3 && rNum < 2/3) {
+                cVar = 'Paper';
+            }
+            else {
+                cVar = 'Scissor';
+            }
+        return cVar;
+        }
+        
+       
+        console.log(scores);
+        function resultss(usr){
+           
+            let userVar;
+            let comp = cPick();
+            if (usr === 'Rock'){
+                if (comp === 'Rock'){
+                    userVar = 'Tie';
+                }
+                else if (comp === 'Paper'){
+                    userVar = 'You Lose';
+                }
+                else 
+                    userVar = 'You win';
+            }
+            else if (usr === 'Paper'){
+                if (comp === 'Rock'){
+                    userVar = 'You win';
+                }
+                else if (comp === 'Paper'){
+                    userVar = 'Tie';
+                }
+                else 
+                    userVar = 'You lose';
+            }
+            else if (usr === 'Scissor'){
+                if (comp === 'Rock'){
+                    userVar = 'You lose';
+                }
+                else if (comp === 'Paper'){
+                    userVar = 'You win';
+                }
+                else 
+                    userVar = 'Tie';
+            }
+            if (userVar === 'You win')
+                scores.wins ++;
+            else if (userVar === 'Tie')
+                scores.ties ++;
+            else if (userVar === 'You lose')
+                scores.losses ++;
+            
+            localStorage.setItem('score', JSON.stringify(scores));
+
+            alert(`You picked ${usr}. Computer picked ${comp}. ${userVar}. win : ${scores.wins},  lose : ${scores.losses}, tie : ${scores.ties}`);
+            
+        }
+        function reset(){
+            scores.wins = 0;
+            scores.losses = 0;
+            scores.ties = 0;
+            localStorage.removeItem('score');
+            
+        }
+    </script>
+</body>
+</html>
