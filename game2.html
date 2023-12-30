@@ -29,28 +29,70 @@
             color: 'red',
             radius: 15,
             speedX: 10,
-            speedY: 11
+            speedY: 6
         };
         const ball2 = {
             x: 150,
             y: 60,
             color: 'green',
             radius: 50,
-            speedX: 6,
-            speedY: 5
+            speedX: 5,
+            speedY: 2
         };
         const ball3 = {
             x: 50,
             y: 150,
             color: 'blue',
             radius: 30,
-            speedX: 4,
-            speedY: 3
+            speedX: 5,
+            speedY: 8
         };
 
-        createBall(ball1);
-        createBall(ball2);
-        createBall(ball3);
+        mainLoop();
+        
+        function mainLoop(){
+            ctx.clearRect(0, 0, w,h);
+
+            createBall(ball1);
+            createBall(ball2);
+            createBall(ball3);
+
+            moveBall(ball1);
+            moveBall(ball2);
+            moveBall(ball3);
+
+            ballWithWall(ball1);
+            ballWithWall(ball2);
+            ballWithWall(ball3);
+
+            requestAnimationFrame(mainLoop);    
+        }
+       
+
+       
+
+
+        function moveBall(ball){
+            ball.x += ball.speedX;
+            ball.y += ball.speedY;
+        }
+
+        function ballWithWall(ball){
+            if (ball.x + ball.radius > w){
+                ball.speedX = -ball.speedX;
+            }
+            else if (ball.x - ball.radius< 0){
+                ball.speedX = -ball.speedX;
+            }
+
+
+            if (ball.y + ball.radius > h){
+                ball.speedY = -ball.speedY;
+            }
+            else if (ball.y - ball.radius < 0){
+                ball.speedY = -ball.speedY;
+            }
+        }
 
         function createBall(ball){
             ctx.save();
