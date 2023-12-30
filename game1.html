@@ -17,7 +17,7 @@
         let canvas, ctx, w,h;
         let xMonster = 10;
         let yMonster = 10;
-        let mSpeed = 1
+        let mSpeed = 1;
         
 
         canvas = document.querySelector('#myCanvas');
@@ -25,22 +25,6 @@
 
         w = canvas.width;
         h = canvas.height;
-        ctx.fillStyle = 'red';
-        ctx.fillRect(10, 10, 60, 60);
-
-        ctx.strokeStyle = 'green';
-        ctx.lineWidth = 4;
-        ctx.strokeRect(300, 140, 140, 40);
-
-        ctx.beginPath();
-        ctx.arc(160, 260, 50, 0, 2*Math.PI);
-        ctx.fill();
-    
-        // some text
-        ctx.fillStyle = "purple";
-        ctx.font = "20px Arial";
-        ctx.fillText("Hello!", 60, 20);
-        
        
 
         mainLoop();
