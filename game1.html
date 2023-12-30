@@ -15,9 +15,24 @@
 
     <script>
         let canvas, ctx, w,h;
-        let xMonster = 10;
-        let yMonster = 10;
-        let mSpeed = 1;
+
+        let ball = {
+            x: 100,
+            y: 100,
+            radius : 15,
+            color : 'green',
+            speedX : 2,
+            speedY : 1
+        };
+        let player =  {
+            x : 10,
+            y: 10,
+            width : 20,
+            height : 20,
+            color : 'red'
+        };
+
+      
         
 
         canvas = document.querySelector('#myCanvas');
@@ -25,36 +40,88 @@
 
         w = canvas.width;
         h = canvas.height;
-       
+        drawCircle(ball);
+        drawPlayer(player);
 
-        mainLoop();
-
-        function mainLoop(){
-            ctx.clearRect(0, 0, w, h);
-            drawMonster(xMonster, yMonster);
-
+        moveBall(ball);
+  
+        // ask for a new animation frame
+        requestAnimationFrame(mainLoop);
 
 
+        function moveBall(b) {
+        b.x += b.speedX;
+        b.y += b.speedY;
+        
+        testCollisionBallWithWalls(b);
+        }
+
+        function testCollisionBallWithWalls(b) {
+            // COLLISION WITH VERTICAL WALLS ?
+            if((b.x + b.radius) > w) {
+            // the ball hit the right wall
+            // change horizontal direction
+            b.speedX = -b.speedX;
+            
+            // put the ball at the collision point
+            b.x = w - b.radius;
+        } else if((b.x -b.radius) < 0) {
+            // the ball hit the left wall
+            // change horizontal direction
+            b.speedX = -b.speedX;
+            
+            // put the ball at the collision point
+            b.x = b.radius;
+        }
+        
+        // COLLISIONS WTH HORIZONTAL WALLS ?
+        // Not in the else as the ball can touch both
+        // vertical and horizontal walls in corners
+        if((b.y + b.radius) > h) {
+            // the ball hit the right wall
+            // change horizontal direction
+            b.speedY = -b.speedY;
+            
+            // put the ball at the collision point
+            b.y = h - b.radius;
+        } else if((b.y -b.radius) < 0) {
+            // the ball hit the left wall
+            // change horizontal direction
+            b.speedY = -b.speedY;
+            
+            // put the ball at the collision point
+            b.Y = b.radius;
+        }  
         }
 
 
 
-        function drawMonster(x, y){
+        function drawPlayer(ply){
             ctx.save();
-            ctx.translate(x,y);
-            ctx.strokeRect(0, 0, 100, 100);
+            ctx.translate(ply.x, ply.y);
 
-            ctx.fillRect(20, 20, 10, 10);
-            ctx.fillRect(65,20,10,10);
+            ctx.fillStyle = ply.color;
+
+            ctx.fillRect(0,0, ply.width, ply.height);
+
+            ctx.restore();
+        }
+
+
+        function drawCircle(crcl){
+            ctx.save();
+
+            ctx.translate(crcl.x, crcl.y);
+
+            ctx.fillStyle = crcl.color;
 
             ctx.beginPath();
-            ctx.arc(47, 60, 20, 0, 2*Math.PI);
-            ctx.fillStyle = 'Blue';
+            ctx.arc(0, 0, crcl.radius, 0, 2*Math.PI);
             ctx.fill();
-
-
+            ctx.restore();
 
         }
+
     </script>
 </body>
 </html>
