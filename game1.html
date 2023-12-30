@@ -15,8 +15,9 @@
 
     <script>
         let canvas, ctx, w,h;
-        xMonster = 10;
-        yMonster = 10;
+        let xMonster = 10;
+        let yMonster = 10;
+        let mSpeed = 1
         
 
         canvas = document.querySelector('#myCanvas');
@@ -48,7 +49,11 @@
             ctx.clearRect(0, 0, w, h);
             drawMonster(xMonster, yMonster);
 
+
+
         }
+
+
 
         function drawMonster(x, y){
             ctx.save();
@@ -56,7 +61,15 @@
             ctx.strokeRect(0, 0, 100, 100);
 
             ctx.fillRect(20, 20, 10, 10);
-            
+            ctx.fillRect(65,20,10,10);
+
+            ctx.beginPath();
+            ctx.arc(47, 60, 20, 0, 2*Math.PI);
+            ctx.fillStyle = 'Blue';
+            ctx.fill();
+
+
+
         }
     </script>
 </body>
