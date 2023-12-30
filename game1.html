@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drawing a monster in Canvas</title>
+    <style>
+        canvas {
+            border: 2px solid black;
+        }
+    </style>
 </head>
 <body>
     <canvas id="myCanvas" width="200" height="200"></canvas>
+
+    <script>
+        let canvas, ctx;
+        canvas = document.querySelector('#myCanvas');
+        ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = 'red';
+        ctx.fillRect(10, 10, 30, 30);
+
+        
+
+    </script>
 </body>
 </html>
