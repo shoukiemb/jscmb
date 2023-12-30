@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BallGame</title>
+    <style>
+        canvas {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="800"></canvas>
+
+
+    <script>
+        let canvas, ctx, w, h;
+
+        canvas = document.querySelector('#myCanvas');
+        ctx = canvas.getContext('2d');
+
+        w = canvas.width;
+        h = canvas.height;
+
+        const ball1 = {
+            x: 20,
+            y: 20,
+            color: 'red',
+            radius: 15,
+            speedX: 10,
+            speedY: 11
+        };
+        const ball2 = {
+            x: 150,
+            y: 60,
+            color: 'green',
+            radius: 50,
+            speedX: 6,
+            speedY: 5
+        };
+        const ball3 = {
+            x: 50,
+            y: 150,
+            color: 'blue',
+            radius: 30,
+            speedX: 4,
+            speedY: 3
+        };
+
+        createBall(ball1);
+        createBall(ball2);
+        createBall(ball3);
+
+        function createBall(ball){
+            ctx.save();
+            ctx.translate(ball.x, ball.y);
+
+            ctx.fillStyle = ball.color;
+            ctx.beginPath();
+            ctx.arc(0,0, ball.radius, 0, 2*Math.PI);
+            ctx.fill();
+
+            ctx.restore();
+        }
+    </script>
+</body>
+</html>
