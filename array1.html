@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images</title>
+</head>
+<body>
+    <div id="myDiv"></div>
+
+    <script>
+        let myPicturesArray = [
+        {
+            "albumId": 1,
+            "id": 1,
+            "title": "accusamus beatae ad facilis cum similique qui sunt",
+            "url": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmFuZG9tfGVufDB8fDB8fHww",
+            "thumbnailUrl": "https://media.istockphoto.com/id/623307196/photo/colored-pencil.webp?s=170667a&w=0&k=20&c=qiJ7qQGhMAJMl0GFtzRxWiNfxdtEMR8qV57ocMF8o6U="
+        },
+        {
+            "albumId": 1,
+            "id": 2,
+            "title": "reprehenderit est deserunt velit ipsam",
+            "url": "https://images.unsplash.com/photo-1496054682147-258414043211?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1508138221679-760a23a2285b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "albumId": 2,
+            "id": 51,
+            "title": "non sunt voluptatem placeat consequuntur rem incidunt",
+            "url": "https://images.unsplash.com/photo-1613336026275-d6d473084e85?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1613336027492-8743a1becef3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fHw%3D"
+        },
+        {
+            "albumId": 2,
+            "id": 52,
+            "title": "eveniet pariatur quia nobis reiciendis laboriosam ea",
+            "url": "https://media.istockphoto.com/id/93435506/photo/role-play-dice.webp?s=170667a&w=0&k=20&c=UpUgyRWV_sWgmdG-RyqOtnatPWVAUC6WO3vRME9PaI8=",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1605142859862-978be7eba909?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "albumId": 3,
+            "id": 127,
+            "title": "magnam quia sed aspernatur",
+            "url": "https://images.unsplash.com/photo-1587590227264-0ac64ce63ce8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "thumbnailUrl": "https://images.unsplash.com/photo-1524369609384-10ce89e42d14?q=80&w=1477&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "albumId": 3,
+            "id": 128,
+            "title": "est facere ut nam repellat numquam quia quia eos",
+            "url": "https://images.unsplash.com/photo-1503751071777-d2918b21bbd9?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "thumbnailUrl": "https://media.istockphoto.com/id/485342590/photo/traveler-with-backpack-walking-in-mountains-at-sunset.webp?s=170667a&w=0&k=20&c=aDGpN1seMFZxwbZu3WY5sndiM6cxS-5cbbwn1XEJiBs="
+        }
+        ];
+
+        myPicturesArray.forEach(function(p, index){
+            let image = document.createElement("img");
+            image.src = p.thumbnailUrl;
+            image.alt = p.title;
+            image.width = "200";
+
+            image.addEventListener('click', function(evt){
+                image.src = p.url;
+                image.width = "500";
+            })
+            document.querySelector('#myDiv').append(image);
+
+        });
+    </script>
+</body>
+</html>
