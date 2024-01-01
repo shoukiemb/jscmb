@@ -33,6 +33,12 @@
         h = canvas.height;
 
         canvas.addEventListener('mousemove', mouseMoved);
+        
+        function mouseOverr(ball, index){
+            if (circRectsOverlap(player.x, player.y, player.width, player.height, ball.x, ball.y, ball.radius)){
+                numBalls.splice(index, 1);
+            }
+        }
 
         function mouseMoved(evt){
             mousePos = getMousePos(canvas, evt);
@@ -50,6 +56,21 @@
                 player.x = mousePos.x;
                 player.y = mousePos.y;
             }
+        }
+
+        // Collisions between rectangle and circle
+        function circRectsOverlap(x0, y0, w0, h0, cx, cy, r) {
+            var testX=cx;
+            var testY=cy;
+            if (testX < x0) 
+                testX=x0;
+            if (testX > (x0+w0)) 
+                testX=(x0+w0);
+            if (testY < y0) 
+                testY=y0;
+            if (testY > (y0+h0)) 
+                testY=(y0+h0);
+            return (((cx-testX)*(cx-testX)+(cy-testY)*(cy-testY))< r*r);
         }
        
         numBalls = ballInput(10);
@@ -96,6 +117,7 @@
         function createAllBall(n){
             n.forEach(function(b) {
                 createBall(b);
+                
             });
         }
        
@@ -104,11 +126,12 @@
 
 
         function moveBall(numBall){
-            numBall.forEach(function(ball){
-            ball.x += ball.speedX;
-            ball.y += ball.speedY;
-
-            ballWithWall(ball);
+            numBall.forEach(function(ball, index){
+                ball.x += ball.speedX;
+                ball.y += ball.speedY;
+                
+                mouseOverr(ball, index);
+                ballWithWall(ball);
 
             });
         }
