@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+</head>
+<body>
+    <button class="btn" onclick="getLocation(event);">Click to show your location with OpenStreetMap</button>
+    <div id="map" class="map"></div>
+
+    <script>
+        function getLocation(ev){
+            ev.preventDefault();
+            if (!navigator.geolocation){
+                alert("Browser doesn't Support Map")
+            }
+            else{
+                navigator.geolocation.getCurrentPosition(success, error);
+            }
+        }
+
+        function success(position){
+            let map, marker;
+            let latitude = position.coords.latitude;
+            let longitude = position.coords.longitude;
+
+            map = L.map('map').setView([[latitude, longitude], 13]);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            key: '760506895e284217a7442ce2efe97797',
+            styleId: 103288,
+            maxZoom: 16
+            }).addTo(map);
+            // Marker using leaflet
+            marker = L.marker([latitude, longitude]).addTo(map);
+            // Popup in leaflet
+            marker.bindPopup('<p>Your location</p>').openPopup();
+            }
+            // Get current position fail
+            function error() {
+            alert('Get current position fail. Please access codepen to get geolocation.');
+        
+            }
+    </script>
+</body>
+</html>
