@@ -10,20 +10,26 @@ class Contact{
 
 }
 
-
-    
-let c1 =new Contact('Shoukie', 'MB', 1111);
-let c2 = new Contact('Hajar', 'FR', 1144);
-contactDb.push(c1);
-contactDb.push(c2);
-for (let i = 0; i < contactDb.length ; i++){
-document.body.innerHTML += `<div>Given Name: ${contactDb[i].givenName} --------- Family Name: ${contactDb[i].familyName}----------------  Postal Code: ${contactDb[i].postal}</div>`;
-}
+let divVar = document.querySelector('.details');
 
 
 function addContact(){
     gName =document.querySelector('#Given').value;
-    alert(gName);
+    fName = document.querySelector('#family').value;
+    pCode = document.querySelector('#post').value;
+    contactDb.push(new Contact(gName, fName, pCode));
+
+    
+
+    showDetails();
+   
+}
+
+function showDetails(){
+    divVar.innerHTML = '';
+    for (let i = 0; i < contactDb.length; i++){
+        divVar.innerHTML += `<p>Given Name: ${contactDb[i].givenName} --------- Family Name: ${contactDb[i].familyName}----------------  Postal Code: ${contactDb[i].postal} </p>`;
+    }
 }
 
 document.querySelector('#addInfo').addEventListener('click', function(evt){
