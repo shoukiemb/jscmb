@@ -25,7 +25,36 @@
 
 
     <script>
-        document
+        document.querySelector('#myBtn').addEventListener('click', function(evt){
+            search();
+        })
+
+        function search(){
+            let queryURL = "https://jsonplaceholder.typicode.com/users";
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', queryURL, true);
+
+            xhr.onload = function(e){
+                let jsonResponse = xhr.response;
+
+                let users = JSON.parse(jsonResponse);
+                displayUsersAsTable(users);
+            }
+            xhr.onerror = function(err){
+                alert('Error' + err);
+            }
+            
+            xhr.send();
+        }
+
+        function displayUsersAsTable(userJson){
+            let divFunc = document.querySelector('#userDiv');
+            divFunc.innerHTML ="";
+
+            let table = document.createElement('table');
+
+            userJson.forEach()
+        }
     </script>
     
 </body>
