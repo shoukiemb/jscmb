@@ -21,7 +21,7 @@
 <body>
     <h2>Working with remote data</h2>
     <button id="myBtn">Get a remote list of users as table</button>
-    <div class="userDiv"></div>
+    <div id="userDiv"></div>
 
 
     <script>
@@ -49,11 +49,20 @@
 
         function displayUsersAsTable(userJson){
             let divFunc = document.querySelector('#userDiv');
-            divFunc.innerHTML ="";
+            divFunc.innerHTML = "";
 
             let table = document.createElement('table');
 
-            userJson.forEach()
+            userJson.forEach(function(eachUser){
+                let row = table.insertRow();
+                let nameCell = row.insertCell();
+                nameCell.innerHTML = eachUser.name;
+
+                let cityCell = row.insertCell();
+                cityCell.innerHTML = eachUser.address.city;
+            }); 
+
+            divFunc.appendChild(table);
         }
     </script>
     
